@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>LogIn</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="chess/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="chess/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="chess/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="chess/css/util.css">
+	<link rel="stylesheet" type="text/css" href="chess/css/main.css">
+<!--===============================================================================================-->
+    
+    
+</head>
+<body >
+	
+	<div class="limiter">
+		<div class="container-login100 ">
+			<div class="wrap-login100 p-t-85 p-b-20" style="padding-top: 50px;">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-70" style="padding-bottom: 0px;">
+						final project web  
+					</span>
+					<span class="login100-form-avatar" style="display:none;">
+						<img src="chess/images/avatar-01.jpg" alt="AVATAR">
+					</span>
+
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+						<input class="input100" type="text" name="email" id="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+						<input class="input100" type="password" name="pass" id="pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" id="login" type="submit">
+							Login
+						</button>
+						<p style="margin-top: 20px; color: #727272;" id="loginMessage"></p>
+					</div>
+
+					<ul class="login-more p-t-190" style="padding-top: 150px;">
+						
+
+						<li>
+							<span class="txt1">
+								You Can : 
+							</span>
+
+							<a href="#" class="txt2" id="signup">
+								Sign up
+							</a>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="chess/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="chess/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="chess/vendor/bootstrap/js/popper.js"></script>
+	<script src="chess/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="chess/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="chess/vendor/daterangepicker/moment.min.js"></script>
+	<script src="chess/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="chess/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="chess/js/main.js"></script>
+
+	
+	  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+var firebaseConfig = {
+    apiKey: "AIzaSyCzziSK4GX8iSJNGdKxuU-eiDYiia0Etq4",
+    authDomain: "project-web-a40f2.firebaseapp.com",
+    databaseURL: "https://project-web-a40f2.firebaseio.com",
+    projectId: "project-web-a40f2",
+    storageBucket: "",
+    messagingSenderId: "401344887178",
+    appId: "1:401344887178:web:2b7a66d615294d88"
+  };
+  firebase.initializeApp(firebaseConfig);
+  // Initialize Firebase
+
+
+	  var root = firebase.database().ref();
+	  var test = root.child('test');
+	  test.set(5);
+	  
+	  test.on('value', function(snapshot) {
+		var testValue = snapshot.val();
+		console.log(testValue);
+	  });
+	  
+	  var testArray = root.child('testArray');
+	  var node1 = testArray.push();
+	  node1.set({
+		name: "david",
+		position: "melech israel"
+	  });
+	  
+	  testArray.on('child_added', function(data) {
+		  console.log(data.val());
+	  });
+
+	  testArray.on('child_changed', function(data) {
+	      console.log(data.val());
+	  });
+
+	  testArray.on('child_removed', function(data) {
+		  console.log(data.val());
+	  });
+	  
+	</script>
+	
+	<script>
+	$(document).ready(function(){
+		var state = "login";
+		
+		$("#forgot").click(function(){
+			$("#shame").fadeIn(500).delay(3000).fadeOut(1000);
+		});
+		
+		$("#signup").click(function(){
+			$(this).text(state);
+			if(state === "login"){
+				state = "signup";
+			} else{
+				state = "login";
+			}
+			$("#login").text(state);
+		});
+		
+		$("form").submit(function(e){
+			e.preventDefault(); // so it wouldn't use form functionality
+			let email = $("#email").val();
+			let pass = $("#pass").val();
+			console.log(email, pass);
+			if(state === "login"){
+				firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+					// Handle Errors here.
+					var errorCode = error.code;
+					var errorMessage = error.message;
+					$("#loginMessage").text(errorMessage);
+				});
+			} else{
+				firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
+				    // Handle Errors here.
+				    var errorCode = error.code;
+				    var errorMessage = error.message;
+					$("#loginMessage").text(errorMessage);
+				});
+			}
+		});
+		
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+				location.href = "???.html";
+			} else {
+				// User is signed out.
+				// ...
+			}
+		});
+		
+	});
+	</script>
+	
+</body>
+</html>
