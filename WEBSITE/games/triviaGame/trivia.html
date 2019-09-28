@@ -1,0 +1,186 @@
+﻿
+
+<html lang="en">
+<head>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+
+        [id*="q"] {
+            border-radius: 10px;
+            width: 39%;
+            font-size: x-large;
+        }
+        
+        [id*="ans"] {
+            border-radius: 10px;
+            width: 59%;
+        }
+
+        div {
+            padding: 0.5px;
+        }
+
+        .row {
+            width: 100%;
+            height: 15%;
+        }
+
+        .answer {
+            border-radius: 10px;
+        }
+
+        .pink {
+            border-radius: 10px;
+            background-color: #f17878;
+        }
+
+        .score_ {
+            width: 100%;
+            height: 60px;
+            border: 1px dashed #e27373;
+            padding-left: 25%;
+            color: black;
+            margin-top: 2%;
+        }
+
+        .size {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .green {
+            background-color: yellowgreen;
+        }
+
+            .green:hover {
+                background-color: rgba(168, 239, 22, 0.85);
+            }
+
+        .start_btn {
+            margin-left: 40%;
+            margin-top: 3%;
+            width: 80%;
+            height: 60%;
+            font-size: x-large;
+            color: white;
+            border-radius: 10px;
+            height: 40%;
+            border: 0.5px solid dimgray;
+            background-color: rgba(241, 120, 120, 0.70);
+        }
+
+            .start_btn:hover {
+                background-color: #f17878;
+            }
+
+        button {
+            height: 30%;
+        }
+
+        body {
+            background-color: black;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="height:25%;">
+            <div class="col-sm-6"><h1 style=" color:white; margin-top:5%; position:absolute; border-radius: 10px;height: 10%;"><b>Welcome To Trivia Game!</b></h1></div>
+            <div><img src="http://dastornews.com/wp-content/uploads/2015/09/chalkboard-trivia-overlay.png" class="col-sm-6" style="position: absolute; float:left; height:28%; width:50%;"></div>
+
+        </div>
+        <div class="row">
+            <div class=" col-sm-3">
+                <label style="color:lightgreen;"> Select Type : </label> <br />
+                <select id="types" style="height: 30%;">
+                    <option value="">Any Type</option>
+                    <option value="boolean"> True/False</option>
+                    <option value="multiple"> Multiply Choice</option>
+                </select>
+
+            </div>
+
+            <div class="col-sm-4">
+                <label style="color:lightgreen;"> Select Category : </label> <br>
+                <select id="categories" style=" height: 30%;">
+                    <option value="">Any Category</option>
+                    <option value="9"> General Knowledge</option>
+                    <option value="10"> Entertainment: Books</option>
+                    <option value="11"> Entertainment: Film</option>
+                    <option value="12"> Entertainment: Music</option>
+                    <option value="13"> Entertainment: Musicals & Theatres</option>
+                    <option value="14"> Entertainment: Television</option>
+                    <option value="15"> Entertainment: Video Games</option>
+                    <option value="16"> Entertainment: Board Games</option>
+                    <option value="17"> Science & Nature</option>
+                    <option value="18"> Science :Computers</option>
+                    <option value="19"> Science :Mathematics</option>
+                    <option value="20"> Methology</option>
+                    <option value="21"> Sports</option>
+                    <option value="22"> Geography</option>
+                    <option value="23"> History</option>
+                    <option value="24"> Politics</option>
+                    <option value="25"> Art</option>
+                    <option value="26"> Celebrities</option>
+                    <option value="27"> Animals</option>
+                    <option value="28"> Vehicles</option>
+                    <option value="29"> Entertainment: Comics</option>
+                    <option value="30"> Science: Gadgets</option>
+                    <option value="31"> Entertainment: Japanese Anime & Manga </option>
+                    <option value="32"> Entertainment: Cartoon & Animations</option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="col-sm-4">
+                <br />
+                <button id="start_button" class="start_btn">Start Game</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div style="position:center; font-size:x-large; " id="question" class=" col-sm-12"></div>
+        </div>
+        <div id="choices">
+
+            <div class="row">
+                <div id="ans0" class="answer col-sm-6"></div>
+                <div id="ans1" class="answer col-sm-6"></div>
+
+            </div>
+            <div class="row">
+                <div id="ans2" class="answer col-sm-6"></div>
+                <div id="ans3" class="answer col-sm-6"></div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <h1 id="score" class="col-sm-12"></h1>
+
+        </div>
+
+
+    </div>
+
+    <script src="gameFuncs.js">
+
+    </script>
+
+</body>
+</html>
